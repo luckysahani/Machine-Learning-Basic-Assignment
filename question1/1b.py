@@ -28,7 +28,7 @@ def read_from_file(file_name_with_path,file_name):
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
 					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
+					if token.isalpha() and token not in stopwords.words('english'):
 						if(token != "Subject"):
 							temp_dictionary.update({token: 'true'})
 			return (temp_dictionary,"spam")					
@@ -39,7 +39,7 @@ def read_from_file(file_name_with_path,file_name):
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
 					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
+					if token.isalpha() and token not in stopwords.words('english'):
 						if(token != "Subject"):
 							temp_dictionary.update({token: 'true'})	
 			return (temp_dictionary,"non_spam")

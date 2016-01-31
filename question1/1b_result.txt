@@ -1,0 +1,116 @@
+Part B 
+-------------------------------------------------
+
+We will consider 10 cases in which, for each case we will take some folder as a testing folder 
+and other folders as training folders.The accuracy for each of the 10 cases are given below:
+
+Case 1: Testing folder is 1:
+-------------------------------------------------
+BernoulliNB accuracy : 0.948096885813
+MultinomialNB accuracy: 0.993079584775
+NLTK Naive Bayes accuracy (by calculation): 0.979238754325
+Most Informative Features
+                 amazing = 'true'           spam : non_sp =    195.2 : 1.0
+             linguistics = 'true'         non_sp : spam   =    145.5 : 1.0
+                    earn = 'true'           spam : non_sp =    138.5 : 1.0
+               unlimited = 'true'           spam : non_sp =    138.5 : 1.0
+              businesses = 'true'           spam : non_sp =    121.8 : 1.0
+
+Case 2: Testing folder is 2:
+-------------------------------------------------
+BernoulliNB accuracy : 0.930795847751
+MultinomialNB accuracy: 0.989619377163
+NLTK Naive Bayes accuracy (by calculation): 0.975778546713
+Most Informative Features
+                 amazing = 'true'           spam : non_sp =    188.5 : 1.0
+             linguistics = 'true'         non_sp : spam   =    145.8 : 1.0
+              investment = 'true'           spam : non_sp =    131.8 : 1.0
+                 secrets = 'true'           spam : non_sp =    125.1 : 1.0
+                    sell = 'true'           spam : non_sp =    119.1 : 1.0
+
+Case 3: Testing folder is 3:
+-------------------------------------------------
+BernoulliNB accuracy : 0.951557093426
+MultinomialNB accuracy: 0.996539792388
+NLTK Naive Bayes accuracy (by calculation): 0.979238754325
+Most Informative Features
+                    sell = 'true'           spam : non_sp =    171.8 : 1.0
+                  remove = 'true'           spam : non_sp =    158.5 : 1.0
+             linguistics = 'true'         non_sp : spam   =    147.1 : 1.0
+               advertise = 'true'           spam : non_sp =    131.8 : 1.0
+              investment = 'true'           spam : non_sp =    128.5 : 1.0
+
+Case 4: Testing folder is 4:
+-------------------------------------------------
+BernoulliNB accuracy : 0.930795847751
+MultinomialNB accuracy: 0.989619377163
+NLTK Naive Bayes accuracy (by calculation): 0.979238754325
+Most Informative Features
+                    sell = 'true'           spam : non_sp =    188.5 : 1.0
+               advertise = 'true'           spam : non_sp =    148.5 : 1.0
+             linguistics = 'true'         non_sp : spam   =    144.9 : 1.0
+                  remove = 'true'           spam : non_sp =    131.5 : 1.0
+              investment = 'true'           spam : non_sp =    125.1 : 1.0
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
+BernoulliNB accuracy : 0.910344827586
+MultinomialNB accuracy: 1.0
+NLTK Naive Bayes accuracy (by calculation): 0.996551724138
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    141.6 : 1.0
+                 secrets = 'true'           spam : non_sp =    131.7 : 1.0
+              investment = 'true'           spam : non_sp =    131.7 : 1.0
+                    sell = 'true'           spam : non_sp =    123.1 : 1.0
+                 amazing = 'true'           spam : non_sp =    115.1 : 1.0
+
+Case 6: Testing folder is 6:
+-------------------------------------------------
+BernoulliNB accuracy : 0.961937716263
+MultinomialNB accuracy: 1.0
+NLTK Naive Bayes accuracy (by calculation): 1.0
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    140.1 : 1.0
+              investment = 'true'           spam : non_sp =    121.8 : 1.0
+              businesses = 'true'           spam : non_sp =    115.1 : 1.0
+                    sell = 'true'           spam : non_sp =    109.1 : 1.0
+                     xxx = 'true'           spam : non_sp =    101.8 : 1.0
+
+Case 7: Testing folder is 7:
+-------------------------------------------------
+BernoulliNB accuracy : 0.913494809689
+MultinomialNB accuracy: 0.996539792388
+NLTK Naive Bayes accuracy (by calculation): 0.993079584775
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    144.7 : 1.0
+                 secrets = 'true'           spam : non_sp =    115.1 : 1.0
+                     xxx = 'true'           spam : non_sp =    115.1 : 1.0
+                    sell = 'true'           spam : non_sp =    113.1 : 1.0
+              investment = 'true'           spam : non_sp =    111.8 : 1.0
+
+Case 8: Testing folder is 8:
+-------------------------------------------------
+BernoulliNB accuracy : 0.910034602076
+MultinomialNB accuracy: 0.989619377163
+NLTK Naive Bayes accuracy (by calculation): 0.9723183391
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    148.2 : 1.0
+              investment = 'true'           spam : non_sp =    135.1 : 1.0
+                     win = 'true'           spam : non_sp =    131.8 : 1.0
+              businesses = 'true'           spam : non_sp =    125.1 : 1.0
+                    sell = 'true'           spam : non_sp =    123.1 : 1.0
+
+Case 9: Testing folder is 9:
+-------------------------------------------------
+BernoulliNB accuracy : 0.930795847751
+MultinomialNB accuracy: 0.993079584775
+NLTK Naive Bayes accuracy (by calculation): 0.996539792388
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    143.9 : 1.0
+              investment = 'true'           spam : non_sp =    135.1 : 1.0
+                 secrets = 'true'           spam : non_sp =    128.5 : 1.0
+                     xxx = 'true'           spam : non_sp =    121.8 : 1.0
+              businesses = 'true'           spam : non_sp =    118.4 : 1.0
+
+Case 10: Testing folder is 10:
+-------------------------------------------------

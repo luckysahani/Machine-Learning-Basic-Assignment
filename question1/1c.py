@@ -10,6 +10,8 @@ import os
 from sklearn import cross_validation
 from nltk.classify import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB,BernoulliNB,GaussianNB
+from nltk.stem import WordNetLemmatizer
+word_lemmatizer = WordNetLemmatizer()
 from sklearn.svm import SVC
 import sys
 
@@ -28,9 +30,9 @@ def read_from_file(file_name_with_path,file_name):
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
 					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
+					if token.isalpha() and token not in stopwords.words('english'):
 						if(token != "Subject"):
-							temp_dictionary.update({token: 'true'})
+							temp_dictionary.update({word_lemmatizer.lemmatize(token): 'true'})
 			return (temp_dictionary,"spam")					
 		else:
 			for line in lines:
@@ -39,9 +41,9 @@ def read_from_file(file_name_with_path,file_name):
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
 					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
+					if token.isalpha() and token not in stopwords.words('english'):
 						if(token != "Subject"):
-							temp_dictionary.update({token: 'true'})	
+							temp_dictionary.update({word_lemmatizer.lemmatize(token): 'true'})	
 			return (temp_dictionary,"non_spam")
 
 
