@@ -8,8 +8,10 @@ from textblob import TextBlob
 from nltk.corpus import stopwords
 import os
 from sklearn import cross_validation
+from nltk.classify import SklearnClassifier
+from sklearn.naive_bayes import MultinomialNB,BernoulliNB,GaussianNB
+from sklearn.svm import SVC
 
-word_dictionary = {}
 output = ()
 final_training_dataset = []
 final_testing_dataset = []
@@ -23,9 +25,7 @@ def read_from_file(file_name_with_path,file_name):
 					continue
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
-					# print token.isalpha(),token
 					if token.isalpha(): #and token not in stopwords.words():
-						word_dictionary.update({token: 'spam'})
 						temp_dictionary.update({token: 'true'})
 			return (temp_dictionary,"spam")					
 		else:
@@ -34,9 +34,7 @@ def read_from_file(file_name_with_path,file_name):
 					continue
 				tokens = nltk.word_tokenize(line)
 				for token in tokens:
-					# print token.isalpha(),token
 					if token.isalpha(): #and token not in stopwords.words():
-						word_dictionary.update({token: 'non_spam'})	
 						temp_dictionary.update({token: 'true'})	
 			return (temp_dictionary,"non_spam")
 
@@ -78,19 +76,61 @@ print "It took "+ str(end_time) + " to make the dicitonary"
 print "Dictionary completed"
 print '\nTraining data'
 start_time = time.time()
-classifier = nltk.NaiveBayesClassifier.train(final_training_dataset)
+# Training NLTK Naive Bayes Classifier
+nltk_naivebayes_classifier = nltk.NaiveBayesClassifier.train(final_training_dataset)
+# Training MultinomialNB Naive Bayes Classifier
+MultinomialNB_classifier = SklearnClassifier(MultinomialNB()).train(final_training_dataset)
+# Training BernoulliNB Naive Bayes Classifier
+BernoulliNB_classifier = SklearnClassifier(BernoulliNB()).train(final_training_dataset)
 end_time = time.time() - start_time
-print "It took "+ str(end_time) + " to train the data for classifier"
+print "It took "+ str(end_time) + " to train the classifiers"
 print 'Training Completed'
+
+
 print '\nTesting data '
 start_time = time.time()
+match_nltk_naivebayes = 0
+match_MultinomialNB = 0
+match_BernoulliNB = 0
+unmatch_nltk_naivebayes = 0
+unmatch_MultinomialNB = 0
+unmatch_BernoulliNB = 0
 for data in final_testing_dataset:
-		print "Original result : "+ data[1] + "\tClassifier result : "+classifier.classify(data[0])
+	# NLTK Naive Bayes Classifier
+	if( data[1] == nltk_naivebayes_classifier.classify(data[0])):
+		match_nltk_naivebayes = match_nltk_naivebayes + 1
+	else:
+		unmatch_nltk_naivebayes = unmatch_nltk_naivebayes + 1
+	# MultinomialNB
+	if( data[1] == MultinomialNB_classifier.classify(data[0])):
+		match_MultinomialNB = match_MultinomialNB + 1
+	else:
+		unmatch_MultinomialNB = unmatch_MultinomialNB + 1
+	# BernoulliNB
+	if( data[1] == BernoulliNB_classifier.classify(data[0])):
+		match_BernoulliNB = match_BernoulliNB + 1
+	else:
+		unmatch_BernoulliNB = unmatch_BernoulliNB + 1
+# Calculating Accuracy
+nltk_naivebayes_accuracy = (float) (match_nltk_naivebayes )/ (match_nltk_naivebayes + unmatch_nltk_naivebayes)
+MultinomialNB_accuracy = (float) (match_MultinomialNB ) / (match_MultinomialNB + unmatch_MultinomialNB)
+BernoulliNB_accuracy = (float) (match_BernoulliNB)/ (match_BernoulliNB + unmatch_BernoulliNB)
+BernoulliNB_accuracy_nltk = nltk.classify.accuracy(BernoulliNB_classifier, final_testing_dataset)
+MultinomialNB_accuracy_nltk = nltk.classify.accuracy(MultinomialNB_classifier, final_testing_dataset)
+
 end_time = time.time() - start_time
 print "It took "+ str(end_time) + " to test the data "
 print 'Testing Completed'
-print '\nPrinting Result'
+
+print '\nPrinting Accuracy\n'
+print "BernoulliNB accuracy (using nltk accuracy funciton):"+ str(BernoulliNB_accuracy_nltk)
+print "BernoulliNB accuracy (by calculation): "+ str(BernoulliNB_accuracy)
+print "MultinomialNB accuracy (using nltk accuracy funciton):"+ str(MultinomialNB_accuracy_nltk)
+print "MultinomialNB accuracy (by calculation): "+ str(MultinomialNB_accuracy)
+print "NLTK Naive Bayes accuracy (by calculation): "+ str(nltk_naivebayes_accuracy)
+
+print '\nPrinting Most informative features\n'
+nltk_naivebayes_classifier.show_most_informative_features(5)
 # See what to print and how
 # see new nltk functions
 # remove subject word
-classifier.show_most_informative_features(5)
