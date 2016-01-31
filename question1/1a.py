@@ -21,27 +21,18 @@ testing_directory = sys.argv[1]
 def read_from_file(file_name_with_path,file_name):
 	temp_dictionary = {}
 	with open(file_name_with_path,"r") as lines:
+		for line in lines:
+			if ( line == ""):
+				continue
+			tokens = nltk.word_tokenize(line)
+			for token in tokens:
+				token = token.lower() # making everything in lower case to avoid conflicts due to word case
+				if token.isalpha(): #and token not in stopwords.words():
+					if(token != "Subject"):
+						temp_dictionary.update({token: 'true'})
 		if file_name.startswith("spm"):
-			for line in lines:
-				if ( line == ""):
-					continue
-				tokens = nltk.word_tokenize(line)
-				for token in tokens:
-					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
-						if(token != "Subject"):
-							temp_dictionary.update({token: 'true'})
-			return (temp_dictionary,"spam")					
+			return (temp_dictionary,"spam")
 		else:
-			for line in lines:
-				if ( line == ""):
-					continue
-				tokens = nltk.word_tokenize(line)
-				for token in tokens:
-					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha(): #and token not in stopwords.words():
-						if(token != "Subject"):
-							temp_dictionary.update({token: 'true'})	
 			return (temp_dictionary,"non_spam")
 
 
@@ -58,7 +49,6 @@ def traverse_over_files(testing_directory):
 			for root, dirs, files in os.walk(test_directory):
 				for name in files:
 					currentFile=os.path.join(root, name)
-					# print "Reading from file "+str(currentFile)
 					output = read_from_file(currentFile,name)
 					final_testing_dataset.append(output)
 		else:
@@ -67,7 +57,6 @@ def traverse_over_files(testing_directory):
 			for root, dirs, files in os.walk(current_directory):
 				for name in files:
 					currentFile=os.path.join(root, name)
-					# print "Reading from file "+str(currentFile)
 					output = read_from_file(currentFile,name)
 					final_training_dataset.append(output)
 
@@ -93,6 +82,7 @@ print '\nTesting data '
 start_time = time.time()
 match_nltk_naivebayes = 0
 unmatch_nltk_naivebayes = 0
+print "Length of testing dataset : "+str(len(final_testing_dataset))
 for data in final_testing_dataset:
 	if( data[1] == nltk_naivebayes_classifier.classify(data[0])):
 		match_nltk_naivebayes = match_nltk_naivebayes + 1

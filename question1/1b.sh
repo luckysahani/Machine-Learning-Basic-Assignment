@@ -9,4 +9,3 @@ do
    printf "\nCase $i: Testing folder is $i:\n-------------------------------------------------\n"
    python 1b.py $i | awk '/---------/{y=1;next}y'
 done
-

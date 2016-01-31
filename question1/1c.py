@@ -23,27 +23,18 @@ testing_directory = sys.argv[1]
 def read_from_file(file_name_with_path,file_name):
 	temp_dictionary = {}
 	with open(file_name_with_path,"r") as lines:
+		for line in lines:
+			if ( line == ""):
+				continue
+			tokens = nltk.word_tokenize(line)
+			for token in tokens:
+				token = token.lower() # making everything in lower case to avoid conflicts due to word case
+				if token.isalpha() and token not in stopwords.words('english'):
+					if(token != "Subject"):
+						temp_dictionary.update({word_lemmatizer.lemmatize(token): 'true'})
 		if file_name.startswith("spm"):
-			for line in lines:
-				if ( line == ""):
-					continue
-				tokens = nltk.word_tokenize(line)
-				for token in tokens:
-					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha() and token not in stopwords.words('english'):
-						if(token != "Subject"):
-							temp_dictionary.update({word_lemmatizer.lemmatize(token): 'true'})
-			return (temp_dictionary,"spam")					
+			return (temp_dictionary,"spam")
 		else:
-			for line in lines:
-				if ( line == ""):
-					continue
-				tokens = nltk.word_tokenize(line)
-				for token in tokens:
-					token = token.lower() # making everything in lower case to avoid conflicts due to word case
-					if token.isalpha() and token not in stopwords.words('english'):
-						if(token != "Subject"):
-							temp_dictionary.update({word_lemmatizer.lemmatize(token): 'true'})	
 			return (temp_dictionary,"non_spam")
 
 

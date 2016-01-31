@@ -42,3 +42,84 @@ Most Informative Features
 
 Case 4: Testing folder is 4:
 -------------------------------------------------
+BernoulliNB accuracy : 0.934256055363
+MultinomialNB accuracy: 0.989619377163
+NLTK Naive Bayes accuracy (by calculation): 0.982698961938
+Most Informative Features
+               advertise = 'true'           spam : non_sp =    148.5 : 1.0
+             linguistics = 'true'         non_sp : spam   =    144.9 : 1.0
+                  remove = 'true'           spam : non_sp =    133.3 : 1.0
+              investment = 'true'           spam : non_sp =    128.5 : 1.0
+                     xxx = 'true'           spam : non_sp =    118.4 : 1.0
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
+BernoulliNB accuracy : 0.910344827586
+MultinomialNB accuracy: 1.0
+NLTK Naive Bayes accuracy (by calculation): 1.0
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    141.6 : 1.0
+              investment = 'true'           spam : non_sp =    135.1 : 1.0
+                 amazing = 'true'           spam : non_sp =    115.1 : 1.0
+                     xxx = 'true'           spam : non_sp =    115.1 : 1.0
+                  remove = 'true'           spam : non_sp =    100.4 : 1.0
+
+Case 6: Testing folder is 6:
+-------------------------------------------------
+BernoulliNB accuracy : 0.961937716263
+MultinomialNB accuracy: 1.0
+NLTK Naive Bayes accuracy (by calculation): 1.0
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    140.1 : 1.0
+              investment = 'true'           spam : non_sp =    128.5 : 1.0
+                     xxx = 'true'           spam : non_sp =    101.8 : 1.0
+                 amazing = 'true'           spam : non_sp =     99.1 : 1.0
+                  remove = 'true'           spam : non_sp =     95.8 : 1.0
+
+Case 7: Testing folder is 7:
+-------------------------------------------------
+BernoulliNB accuracy : 0.916955017301
+MultinomialNB accuracy: 0.996539792388
+NLTK Naive Bayes accuracy (by calculation): 0.982698961938
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    144.7 : 1.0
+              investment = 'true'           spam : non_sp =    118.4 : 1.0
+                     xxx = 'true'           spam : non_sp =    115.1 : 1.0
+                  remove = 'true'           spam : non_sp =    112.8 : 1.0
+                 amazing = 'true'           spam : non_sp =    107.1 : 1.0
+
+Case 8: Testing folder is 8:
+-------------------------------------------------
+BernoulliNB accuracy : 0.913494809689
+MultinomialNB accuracy: 0.993079584775
+NLTK Naive Bayes accuracy (by calculation): 0.965397923875
+Most Informative Features
+                   bonus = 'true'           spam : non_sp =    158.5 : 1.0
+             linguistics = 'true'         non_sp : spam   =    148.2 : 1.0
+              investment = 'true'           spam : non_sp =    141.8 : 1.0
+                 amazing = 'true'           spam : non_sp =    115.1 : 1.0
+               overnight = 'true'           spam : non_sp =    105.1 : 1.0
+
+Case 9: Testing folder is 9:
+-------------------------------------------------
+BernoulliNB accuracy : 0.930795847751
+MultinomialNB accuracy: 0.993079584775
+NLTK Naive Bayes accuracy (by calculation): 0.996539792388
+Most Informative Features
+             linguistics = 'true'         non_sp : spam   =    143.9 : 1.0
+              investment = 'true'           spam : non_sp =    141.8 : 1.0
+                     xxx = 'true'           spam : non_sp =    121.8 : 1.0
+                 amazing = 'true'           spam : non_sp =    117.1 : 1.0
+                   bonus = 'true'           spam : non_sp =     93.1 : 1.0
+
+Case 10: Testing folder is 10:
+-------------------------------------------------
+BernoulliNB accuracy : 0.896907216495
+MultinomialNB accuracy: 0.989690721649
+NLTK Naive Bayes accuracy (by calculation): 0.993127147766
+Most Informative Features
+                     xxx = 'true'           spam : non_sp =    125.3 : 1.0
+                 amazing = 'true'           spam : non_sp =    119.3 : 1.0
+                  remove = 'true'           spam : non_sp =    101.3 : 1.0
+                   bonus = 'true'           spam : non_sp =     97.3 : 1.0
+               advertise = 'true'           spam : non_sp =     93.3 : 1.0
