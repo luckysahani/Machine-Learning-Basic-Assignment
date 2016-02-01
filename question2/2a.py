@@ -1,24 +1,25 @@
 import nltk
 nltk.download('punkt') # for tokens
 nltk.download("stopwords") # for stopwords
-import random
 import re
 import time
-from textblob import TextBlob
 from nltk.corpus import stopwords
 import os
-from sklearn import cross_validation
 from nltk.classify import SklearnClassifier
-from sklearn.naive_bayes import MultinomialNB,BernoulliNB,GaussianNB
+from sklearn.naive_bayes import MultinomialNB,BernoulliNB
 from nltk.stem import WordNetLemmatizer
 word_lemmatizer = WordNetLemmatizer()
-from sklearn.svm import SVC
 import sys
+from sklearn.linear_model import Perceptron
+# from sklearn.feature_extraction.text import CountVectorizer
+# vectorizer = CountVectorizer(tokenizer=tokenize)
 
 output = ()
 main_dictionary = {}
-final_training_dataset = []
-final_testing_dataset = []
+final_training_dataset_values = []
+final_training_dataset_keys = []
+final_testing_dataset_values = []
+final_testing_dataset_keys = []
 testing_directory = sys.argv[1]
 
 def read_from_file_to_make_dictionary(file_name_with_path,file_name):
@@ -29,9 +30,10 @@ def read_from_file_to_make_dictionary(file_name_with_path,file_name):
 			tokens = nltk.word_tokenize(line)
 			for token in tokens:
 				token = token.lower() # making everything in lower case to avoid conflicts due to word case
+				# if token.isalpha(): #and token not in stopwords.words():
 				if token.isalpha() and token not in stopwords.words('english'):
-					if(token != "Subject"):
-						main_dictionary.update({word_lemmatizer.lemmatize(token): 0})
+					# main_dictionary.update({token: 0})
+					main_dictionary.update({word_lemmatizer.lemmatize(token): 0})
 
 
 
@@ -43,7 +45,7 @@ def make_dictionary():
 			read_from_file_to_make_dictionary(os.path.join(root, name),name)
 
 def read_from_file(file_name_with_path,file_name):
-	temp_dictionary = {}
+	temp_dictionary = main_dictionary.copy()
 	with open(file_name_with_path,"r") as lines:
 		for line in lines:
 			if ( line == ""):
@@ -51,17 +53,18 @@ def read_from_file(file_name_with_path,file_name):
 			tokens = nltk.word_tokenize(line)
 			for token in tokens:
 				token = token.lower() # making everything in lower case to avoid conflicts due to word case
+				# if token.isalpha(): #and token not in stopwords.words():
 				if token.isalpha() and token not in stopwords.words('english'):
-					if(token != "Subject"):
-						temp_dictionary.update({word_lemmatizer.lemmatize(token): 1})
+					# temp_dictionary.update({token: 1})
+					temp_dictionary.update({word_lemmatizer.lemmatize(token): 1})
 		if file_name.startswith("spm"):
-			return (temp_dictionary,"spam")
+			return (list(temp_dictionary.values()),"spam")
 		else:
-			return (temp_dictionary,"non_spam")
+			return (list(temp_dictionary.values()),"non_spam")
 
 
 def traverse_over_files(testing_directory):
-	global final_training_dataset
+	# global final_training_dataset_values,final_training_dataset_keys
 	print "Your current working directory is :"+os.getcwd()
 	dataset_directory = os.getcwd()+"/bare"
 	print "Your dataset directory is :"+ dataset_directory
@@ -74,7 +77,8 @@ def traverse_over_files(testing_directory):
 				for name in files:
 					currentFile=os.path.join(root, name)
 					output = read_from_file(currentFile,name)
-					final_testing_dataset.append(output)
+					final_testing_dataset_keys.append(output[0])
+					final_testing_dataset_values.append(output[1])
 		else:
 			current_directory = dataset_directory+"/"+dir_cur
 			print "Current working for training dataset on :"+current_directory
@@ -82,7 +86,10 @@ def traverse_over_files(testing_directory):
 				for name in files:
 					currentFile=os.path.join(root, name)
 					output = read_from_file(currentFile,name)
-					final_training_dataset.append(output)
+					# print output
+					# raw_input()
+					final_training_dataset_keys.append(output[0])
+					final_training_dataset_values.append(output[1])
 
 print "Reading files to make Dictionary "
 start_time = time.time()
@@ -98,40 +105,27 @@ end_time = time.time() - start_time
 print "It took "+ str(end_time) + " to make the Training Dataset"
 print "Training Dataset completed"
 
-# print '\nTraining data'
-# start_time = time.time()
-# # Training NLTK Naive Bayes Classifier
-# nltk_naivebayes_classifier = nltk.NaiveBayesClassifier.train(final_training_dataset)
-# # Training MultinomialNB Naive Bayes Classifier
-# MultinomialNB_classifier = SklearnClassifier(MultinomialNB()).train(final_training_dataset)
-# # Training BernoulliNB Naive Bayes Classifier
-# BernoulliNB_classifier = SklearnClassifier(BernoulliNB()).train(final_training_dataset)
-# end_time = time.time() - start_time
-# print "It took "+ str(end_time) + " to train the classifiers"
-# print 'Training Completed'
+print '\nTraining data'
+start_time = time.time()
+perceptron_classifier = Perceptron()
+perceptron_classifier.fit(final_training_dataset_keys, final_training_dataset_values)
+end_time = time.time() - start_time
+print "It took "+ str(end_time) + " to train the classifiers"
+print 'Training Completed'
 
-# print '\nTesting data '
-# start_time = time.time()
-# match_nltk_naivebayes = 0
-# unmatch_nltk_naivebayes = 0
-# for data in final_testing_dataset:
-# 	if( data[1] == nltk_naivebayes_classifier.classify(data[0])):
-# 		match_nltk_naivebayes = match_nltk_naivebayes + 1
-# 	else:
-# 		unmatch_nltk_naivebayes = unmatch_nltk_naivebayes + 1
-# # Calculating Accuracy
-# nltk_naivebayes_accuracy = (float) (match_nltk_naivebayes )/ (match_nltk_naivebayes + unmatch_nltk_naivebayes)
-# BernoulliNB_accuracy = nltk.classify.accuracy(BernoulliNB_classifier, final_testing_dataset)
-# MultinomialNB_accuracy = nltk.classify.accuracy(MultinomialNB_classifier, final_testing_dataset)
+print '\nTesting data '
+start_time = time.time()
+# Calculating Accuracy
+perceptron_classifier_accuracy = perceptron_classifier.score(final_testing_dataset_keys, final_testing_dataset_values)
 
-# end_time = time.time() - start_time
-# print "It took "+ str(end_time) + " to test the data "
-# print 'Testing Completed'
+end_time = time.time() - start_time
+print "It took "+ str(end_time) + " to test the data "
+print 'Testing Completed'
 
 # print '\nprinting Accuracy'
-# print "\nCase "+str(testing_directory)+": Testing folder is part"+str(testing_directory)
-# print "-------------------------------------------------"
-# print "BernoulliNB accuracy : "+ str(BernoulliNB_accuracy)
-# print "MultinomialNB accuracy: "+ str(MultinomialNB_accuracy)
-# print "NLTK Naive Bayes accuracy (by calculation): "+ str(nltk_naivebayes_accuracy)
-# nltk_naivebayes_classifier.show_most_informative_features(5)
+print "\nCase "+str(testing_directory)+": Testing folder is part"+str(testing_directory)
+print "-------------------------------------------------"
+print "Perceptron accuracy : "+ str(perceptron_classifier_accuracy)
+
+
+# print 'Training Size:'+str(len(final_training_dataset_keys))+' and Testing size = '+str(len(final_testing_dataset_keys))

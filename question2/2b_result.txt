@@ -1,0 +1,26 @@
+
+
+Part B 
+-------------------------------------------------
+
+We will consider 10 cases in which, for each case we will take some folder as a testing folder 
+and other folders as training folders.The accuracy for each of the 10 cases are given below:
+
+Case 1: Testing folder is 1:
+-------------------------------------------------
+Perceptron accuracy : 0.993079584775
+
+Case 2: Testing folder is 2:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 3: Testing folder is 3:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 4: Testing folder is 4:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
