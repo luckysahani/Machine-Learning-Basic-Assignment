@@ -1,0 +1,60 @@
+Euclidean Metric with varying k
+================================================
+
+Testing for n_neighbors = 1 and metric = euclidean
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9691
+
+Testing for n_neighbors = 2 and metric = euclidean
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9627
+
+Testing for n_neighbors = 3 and metric = euclidean
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9705
+
+Testing for n_neighbors = 4 and metric = euclidean
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9682
+
+Mean Accuracy for metric : euclidean is 0.967625
+
+Manhattan with varying k
+================================================
+
+Testing for n_neighbors = 1 and metric = manhattan
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9631
+
+Testing for n_neighbors = 2 and metric = manhattan
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.954
+
+Testing for n_neighbors = 3 and metric = manhattan
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9633
+
+Testing for n_neighbors = 4 and metric = manhattan
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9607
+
+Mean Accuracy for metric : manhattan is 0.960275
+
+Minkowski with varying k
+================================================
+
+Testing for n_neighbors = 1 and metric = minkowski
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9691
+
+Testing for n_neighbors = 2 and metric = minkowski
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9627
+
+Testing for n_neighbors = 3 and metric = minkowski
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9705
+
+Testing for n_neighbors = 4 and metric = minkowski
+-------------------------------------------------
+KNeighborsClassifier accuracy : 0.9682

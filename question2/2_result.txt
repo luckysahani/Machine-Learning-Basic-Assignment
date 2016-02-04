@@ -1,0 +1,153 @@
+Question 2
+=================================================
+Part A 
+=================================================
+
+We will consider 10 cases in which, for each case we will take some folder as a testing folder 
+and other folders as training folders.The accuracy for each of the 10 cases are given below:
+
+Case 1: Testing folder is 1:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 2: Testing folder is 2:
+-------------------------------------------------
+Perceptron accuracy : 0.993079584775
+
+Case 3: Testing folder is 3:
+-------------------------------------------------
+Perceptron accuracy : 0.996539792388
+
+Case 4: Testing folder is 4:
+-------------------------------------------------
+Perceptron accuracy : 0.993079584775
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
+Perceptron accuracy : 1.0
+
+Case 6: Testing folder is 6:
+-------------------------------------------------
+Perceptron accuracy : 1.0
+
+Case 7: Testing folder is 7:
+-------------------------------------------------
+Perceptron accuracy : 0.993079584775
+
+Case 8: Testing folder is 8:
+-------------------------------------------------
+Perceptron accuracy : 0.996539792388
+
+Case 9: Testing folder is 9:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 10: Testing folder is 10:
+-------------------------------------------------
+Perceptron accuracy : 0.989690721649
+
+Average (Part A)
+-------------------------------------------------
+Perceptron accuracy : 0.9937787607463
+
+
+Part B 
+=================================================
+
+We will consider 10 cases in which, for each case we will take some folder as a testing folder 
+and other folders as training folders.The accuracy for each of the 10 cases are given below:
+
+Case 1: Testing folder is 1:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 2: Testing folder is 2:
+-------------------------------------------------
+Perceptron accuracy : 0.982698961938
+
+Case 3: Testing folder is 3:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 4: Testing folder is 4:
+-------------------------------------------------
+Perceptron accuracy : 0.996539792388
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
+Perceptron accuracy : 0.993103448276
+
+Case 6: Testing folder is 6:
+-------------------------------------------------
+Perceptron accuracy : 1.0
+
+Case 7: Testing folder is 7:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 8: Testing folder is 8:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 9: Testing folder is 9:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 10: Testing folder is 10:
+-------------------------------------------------
+Perceptron accuracy : 0.989690721649
+
+Average (Part B)
+-------------------------------------------------
+Perceptron accuracy : 0.9899749187227
+
+
+Part C 
+=================================================
+
+We will consider 10 cases in which, for each case we will take some folder as a testing folder 
+and other folders as training folders.The accuracy for each of the 10 cases are given below:
+
+Case 1: Testing folder is 1:
+-------------------------------------------------
+Perceptron accuracy : 0.98615916955
+
+Case 2: Testing folder is 2:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 3: Testing folder is 3:
+-------------------------------------------------
+Perceptron accuracy : 0.975778546713
+
+Case 4: Testing folder is 4:
+-------------------------------------------------
+Perceptron accuracy : 0.996539792388
+
+Case 5: Testing folder is 5:
+-------------------------------------------------
+Perceptron accuracy : 1.0
+
+Case 6: Testing folder is 6:
+-------------------------------------------------
+Perceptron accuracy : 0.996539792388
+
+Case 7: Testing folder is 7:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 8: Testing folder is 8:
+-------------------------------------------------
+Perceptron accuracy : 0.993079584775
+
+Case 9: Testing folder is 9:
+-------------------------------------------------
+Perceptron accuracy : 0.989619377163
+
+Case 10: Testing folder is 10:
+-------------------------------------------------
+Perceptron accuracy : 0.975945017182
+
+Average (Part C)
+-------------------------------------------------
+Perceptron accuracy : 0.9892900034485

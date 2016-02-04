@@ -1,0 +1,9 @@
+1.) The script and code for individual files are in their respective folders. 
+
+2.) Care for the input format ( Their is an argument i required as a number to mark which part i is the testing folder )
+
+3.) The result for each question {a} is in {a}_result.txt in Result folder
+
+4.) We can see more resuts for accuracy by changing the number of iterations for Perceptron for question 2 
+
+5.) We can vary the value of alpha from 0.0001 to 1 for the Binomial and Multinomail Distribution to see more results, and can compare accuracy for those.

@@ -12,6 +12,8 @@ from nltk.classify import SklearnClassifier
 from sklearn.naive_bayes import MultinomialNB,BernoulliNB,GaussianNB
 from sklearn.svm import SVC
 import sys
+from nltk import precision
+
 
 output = ()
 final_training_dataset = []
@@ -103,4 +105,5 @@ print "-------------------------------------------------"
 print "BernoulliNB accuracy : "+ str(BernoulliNB_accuracy)
 print "MultinomialNB accuracy: "+ str(MultinomialNB_accuracy)
 print "NLTK Naive Bayes accuracy (by calculation): "+ str(nltk_naivebayes_accuracy)
+# print('Precision:', precision(final_training_dataset, final_testing_dataset))
 nltk_naivebayes_classifier.show_most_informative_features(5)

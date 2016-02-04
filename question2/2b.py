@@ -62,7 +62,8 @@ def read_from_file(file_name_with_path,file_name):
 					temp_dictionary[lemmatized_word] += 1
 					token_to_be_updated.append(lemmatized_word)
 					# temp_dictionary.update({word_lemmatizer.lemmatize(token): 1})
-		for token in token_to_be_updated:
+		for token in list(set(token_to_be_updated)):
+			# print temp_dictionary[token]
 			tf = 1 + log(temp_dictionary[token])
 			temp_dictionary[token]= tf
 		if file_name.startswith("spm"):

@@ -61,7 +61,6 @@ def make_dictionary():
 
 def read_from_file(file_name_with_path,file_name):
 	global total_number_of_documents
-	temp_dictionary.clear()
 	temp_dictionary = main_dictionary.copy()
 	token_to_be_updated = []
 	with open(file_name_with_path,"r") as lines:
@@ -78,11 +77,11 @@ def read_from_file(file_name_with_path,file_name):
 					temp_dictionary[lemmatized_word] += 1
 					token_to_be_updated.append(lemmatized_word)
 					# temp_dictionary.update({word_lemmatizer.lemmatize(token): 1})
-		for token in token_to_be_updated:
-			print temp_dictionary[token],token
+		for token in list(set(token_to_be_updated)):
+			# print temp_dictionary[token],token
 			tf = 1 + log(temp_dictionary[token])
 			idf = log( 1 + (total_number_of_documents/(1 + files_occured_dictionary[token])))
-			print "The number of times "+ str(token) +" has occured ="+str(files_occured_dictionary[token])+" and idf = "+str(idf)
+			# print "The number of times "+ str(token) +" has occured ="+str(files_occured_dictionary[token])+" and idf = "+str(idf)
 			temp_dictionary[token]= idf*tf
 		if file_name.startswith("spm"):
 			return (list(temp_dictionary.values()),"spam")
